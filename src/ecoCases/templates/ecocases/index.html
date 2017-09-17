@@ -1,0 +1,9 @@
+{% if latest_ecocase_list %}
+<ul>
+{% for ecocase in latest_ecocase_list %}
+    <li><a href="{% url 'ecocases:detail' ecocase.id %}">{{ ecocase.ecocase_title }}</a></li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No ecocases are available.</p>
+{% endif %}
