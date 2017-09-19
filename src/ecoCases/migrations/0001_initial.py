@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('esm_title', models.CharField(max_length=200)),
                 ('votes', models.IntegerField(default=0)),
-                ('ecocase', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='ecoCases.EcoCase')),
+                ('ecocase', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='ecocases.EcoCase')),
             ],
         ),
     ]

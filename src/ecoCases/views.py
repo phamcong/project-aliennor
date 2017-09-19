@@ -4,6 +4,7 @@ from django.template import loader
 from django.urls import reverse
 from django.views import generic
 from .models import EcoCase, ESM
+from .forms import EcoCaseForm
 
 
 class IndexView(generic.ListView):
@@ -26,18 +27,24 @@ class DetailView(generic.DetailView):
     template_name = 'ecocases/detail.html'
 
 
-# def index(request):
-#     '''
-#         Display five lastest ecocases by pub_date.
-#     '''
-#     latest_ecocase_list = EcoCase.objects.order_by('-pub_date')[:5]
-#     context = {'latest_ecocase_list': latest_ecocase_list}
-#     return render(request, 'ecocases/index.html', context)
+class CreateView(generic.CreateView):
+    '''
+        Create new ecocase
+    '''
+    model = EcoCase
+    template_name = 'ecocase/create.html'
 
+    # def index(request):
+    #     '''
+    #         Display five lastest ecocases by pub_date.
+    #     '''
+    #     latest_ecocase_list = EcoCase.objects.order_by('-pub_date')[:5]
+    #     context = {'latest_ecocase_list': latest_ecocase_list}
+    #     return render(request, 'ecocases/index.html', context)
 
-# def detail(request, ecocase_id):
-#     '''
-#         Display ecocase by ecocase_id
-#     '''
-#     ecocase = get_object_or_404(EcoCase, pk=ecocase_id)
-#     return render(request, 'ecocases/detail.html', {'ecocase': ecocase})
+    # def detail(request, ecocase_id):
+    #     '''
+    #         Display ecocase by ecocase_id
+    #     '''
+    #     ecocase = get_object_or_404(EcoCase, pk=ecocase_id)
+    #     return render(request, 'ecocases/detail.html', {'ecocase': ecocase})

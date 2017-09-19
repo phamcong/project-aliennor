@@ -17,6 +17,6 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^ecocases/', include('ecoCases.urls', namespace='ecocases')),
+    url(r'^ecocases/', include('ecocases.urls', namespace='ecocases')),
     url(r'^admin/', admin.site.urls),
 ]
