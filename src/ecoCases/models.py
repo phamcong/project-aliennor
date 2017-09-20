@@ -5,8 +5,9 @@ class EcoCase(models.Model):
     ecocase_title = models.CharField(max_length=200)
     ecocase_description = models.TextField(max_length=300)
     ecocase_characters = models.TextField(max_length=5000)
-    pub_date = models.DateTimeField('date published')
-    img_url_list = models.CharField(max_length=None)
+    pub_date = models.DateTimeField(auto_now_add=True)
+    img_url_list = models.CharField(max_length=2000, default='')
+    ecocase_images = models.FileField(upload_to='ecocases/', null=True)
 
     def __str__(self):
         return self.ecocase_title

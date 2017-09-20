@@ -1,11 +1,15 @@
 from django import forms
+from .models import EcoCase
 
+class EcoCaseForm(forms.ModelForm):
+    ecocase_images = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
+    class Meta:
+        model = EcoCase
+        fields = ('ecocase_title', 'ecocase_description', 'ecocase_characters', 'ecocase_images') 
 
-class EcoCaseForm(forms.Form):
-    ecocase_title = forms.CharField(max_length=200)
-    ecocase_description = forms.CharField(
-        widget=forms.Textarea, max_length=300)
-    ecocase_characters = forms.CharField(
-        widget=forms.Textarea, max_length=5000)
-    pub_date = forms.DateTimeField('date published')
-    img_url_list = forms.CharField(max_length=None)
+    # ecocase_title = forms.CharField(max_length=200)
+    # ecocase_description = forms.CharField(widget=forms.Textarea, max_length=300)
+    # ecocase_characters = forms.CharField(widget=forms.Textarea, max_length=5000)
+    # ecocase_image_urls = forms.CharField(max_length=None)
+    # ecocase_images = forms.FileField()
+    # pub_date = forms.DateTimeField('date published')
