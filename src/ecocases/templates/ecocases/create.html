@@ -1,4 +1,21 @@
-<form method="post" enctype="multipart/form-data" multiple> {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Upload"/>
-</form>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block content %}
+<!-- create new ecocase -->
+<main class="container" role="main">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">Create new ecocase</h4>
+        </div>
+        <br>
+        <div class="panel-body">
+            <form method="post" enctype="multipart/form-data" multiple> {% csrf_token %}
+                {{ form|crispy }}
+                <input type="submit" value="Create"/>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

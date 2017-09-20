@@ -12,11 +12,11 @@ class EcoCaseAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {'fields': ['ecocase_title',
                            'ecocase_description', 'ecocase_characters']}),
-        ('Date information', {'fields': ['pub_date']})
+        ('Date information', {'fields': ['timestamp']})
     ]
     inlines = [ESMInline]
-    list_display = ['ecocase_title', 'pub_date']
-    list_filter = ['pub_date']
+    list_display = ['ecocase_title', 'timestamp']
+    list_filter = ['timestamp']
 
 
 admin.site.register(EcoCase, EcoCaseAdmin)
