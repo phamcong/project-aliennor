@@ -22,4 +22,8 @@ from django.views.static import serve
 urlpatterns = [
     url(r'^ecocases/', include('ecocases.urls', namespace='ecocases')),
     url(r'^admin/', admin.site.urls),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    url(r'^tinymce/', include('tinymce.urls')),
+]
+
+if settings.DEBUG is True:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

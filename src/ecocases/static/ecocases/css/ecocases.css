@@ -12,3 +12,42 @@ h4 {
     float: left;
     margin: -5px 10px;
 }
+
+.top-buffer { 
+    margin-top:20px; 
+    margin-bottom: 50px;
+}
+
+.EcocaseImageList
+{
+    overflow-x:scroll;
+    overflow-y:hidden;
+    height:300px;
+    width:100%;
+    padding: 0 15px;
+}
+
+.EcocaseImageItem {
+    padding:0;
+    height:250px;
+}
+
+.cover-container {
+    height: 300px;
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+.cover-item {
+    position: relative;
+    display: inline-block;
+    margin: 8px 8px;
+    /* box-shadow: 2px 2px 4px #bbb; */
+    border-top-right-radius: 4px;
+    height: 250px;
+    vertical-align: bottom;
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

@@ -3,7 +3,6 @@
 
 {% block content %}
 <!-- Display latest added ecocases -->
-<main class="container" role="main">
     <div class="panel panel-default">
         {% if latest_ecocase_list %}
             {% for ecocase in latest_ecocase_list %}
@@ -11,17 +10,17 @@
                     <h4 class="panel-title"><a href="{% url 'ecocases:detail' ecocase.id %}">{{ ecocase.ecocase_title }}</a></h4>
                 </div>
                 <div class="panel-body">
-                    <div class="row">
+                    <div class="row top-buffer">
                         <div class="col-md-4">
-                                {% if ecocase.first_image_url %}
-                                    <div class="ecocase-photo">
-                                        <img src="{{ ecocase.first_image_url }}" class="center-block" alt="" width="300">
-                                    </div>
-                                {% endif %}
-                            </div>
-                            <div class="col-md-8">
-                                {{ ecocase.ecocase_description }}
-                            </div>
+                            {% if ecocase.first_image_url %}
+                                <div class="ecocase-photo">
+                                    <img src="{{ ecocase.first_image_url }}" class="center-block" alt="" width="300">
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-8">
+                            {{ ecocase.ecocase_description }}
+                        </div>
                     </div>
                 </div>                                
             {% endfor %}
@@ -32,5 +31,4 @@
     <div class="text-right">
         <button type="button" class="btn btn-default"><a href="{% url 'ecocases:create' %}">Create</a></button>
     </div>
-</main>
 {% endblock %}

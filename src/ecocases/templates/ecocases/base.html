@@ -9,7 +9,10 @@
     <link rel="stylesheet" href="{% static 'ecocases/bootstrap/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'ecocases/css/ecocases.css' %}">
     <title>Eco-Innovation Cases</title>
+    <script src="{% static 'ecocases/js/tinymce/tinymce.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'ecocases/js/tinymce/custom.js' %}" ></script>
 </head>
+
 <body>
     <!-- Image and text -->
     <nav class="navbar navbar-default">
@@ -24,9 +27,9 @@
     </nav>
     
     <hr>
-
-    {% block content %}
-    {% endblock %}
-    
+    <main class="container" role="main">
+        {% block content %}
+        {% endblock %}
+    </main>
 </body>
 </html>

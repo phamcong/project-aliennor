@@ -4,7 +4,6 @@
 
 {% block content %}
 <!-- create new ecocase -->
-<main class="container" role="main">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">Create new ecocase</h4>
@@ -12,10 +11,14 @@
         <br>
         <div class="panel-body">
             <form method="post" enctype="multipart/form-data" multiple> {% csrf_token %}
-                {{ form|crispy }}
-                <input type="submit" value="Create"/>
+                <head>
+                    {{ form|crispy }}
+                </head>                
+                <br>
+                <div class="text-right">
+                    <input type="submit" class="btn btn-primary" value="Create" class=""/>
+                </div>
             </form>
         </div>
     </div>
-</main>
 {% endblock %}

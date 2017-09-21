@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ecocases',
     'crispy_forms',
+    'tinymce',
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
