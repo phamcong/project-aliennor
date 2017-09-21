@@ -19,7 +19,7 @@
                             {% endif %}
                         </div>
                         <div class="col-md-8">
-                            {{ ecocase.ecocase_description }}
+                            {% autoescape off %}{{ ecocase.ecocase_description }}{% endautoescape %}                             
                         </div>
                     </div>
                 </div>                                

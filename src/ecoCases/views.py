@@ -56,9 +56,9 @@ class CreateView(FormView):
         # uploaded_file_urls = []
 
         # form_class = self.get_form_class()
-        # form = self.get_form(form_class)          
-        # uploaded_files = request.FILES.getlist('ecocase_images')       
-        
+        # form = self.get_form(form_class)
+        # uploaded_files = request.FILES.getlist('ecocase_images')
+
         # if form.is_valid():
         #     joined_title = '_'.join(form.cleaned_data['ecocase_title'].split(' '))
         #     for count, x in enumerate(uploaded_files):
@@ -71,7 +71,7 @@ class CreateView(FormView):
         #         print('upload_file_url2:' + uploaded_file_url)
         #         save_uploaded_file(x, uploaded_file_url)
         #         uploaded_file_urls.append(uploaded_file_url)
-            
+
         #     print(uploaded_file_urls)
 
         #     ecocase = EcoCase(ecocase_title=form.cleaned_data['ecocase_title'],
@@ -87,16 +87,19 @@ class CreateView(FormView):
         form_class = self.get_form_class()
         form = self.get_form(form_class)
         images = request.FILES.getlist('ecocase_images')
-        fs = FileSystemStorage(location=os.path.join(settings.BASE_DIR, 'media/ecocases'))
+        fs = FileSystemStorage(location=os.path.join(
+            settings.BASE_DIR, 'media/ecocases'))
         image_url_list = []
         if form.is_valid():
-            joined_title = '_'.join(form.cleaned_data['ecocase_title'].split(' '))
+            joined_title = '_'.join(
+                form.cleaned_data['ecocase_title'].split(' '))
 
             for count, x in enumerate(images):
                 image_extension = x.name.split('.')[-1]
-                new_image_name = joined_title + '_' + str(count) + '.' + image_extension
+                new_image_name = joined_title + '_' + \
+                    str(count) + '.' + image_extension
                 uploaded_image = fs.save(new_image_name, x)
-                image_url_list.append('../media/ecocases/'+new_image_name)
+                image_url_list.append('../media/ecocases/' + new_image_name)
 
             ecocase = EcoCase(ecocase_title=form.cleaned_data['ecocase_title'],
                               ecocase_description=form.cleaned_data['ecocase_description'],

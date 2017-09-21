@@ -21,13 +21,13 @@
         </div>
         <div class="col-md-8">
             <h4>Description: </h4>
-            {{ ecocase.ecocase_description }}
+            {% autoescape off %}{{ ecocase.ecocase_description }}{% endautoescape %}
         </div>
     </div>
     <div class="row top-buffer">
         <div class="col-md-12">
             <h4>Characters  : </h4>
-            {{ ecocase.ecocase_description }}
+            {% autoescape off %}{{ ecocase.ecocase_characters }}{% endautoescape %}
         </div>
     </div>
 </div>  
