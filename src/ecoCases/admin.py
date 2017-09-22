@@ -2,12 +2,13 @@ from django.contrib import admin
 from .models import EcoCase, ESM
 from django.forms import TextInput, Textarea
 from django.db import models
+from .forms import EcoCaseForm
 # Register your models here.
 
 
 class ESMInline(admin.TabularInline):
     model = ESM
-    extra = 1
+    extra = 0
 
 
 class EcoCaseAdmin(admin.ModelAdmin):
@@ -17,7 +18,7 @@ class EcoCaseAdmin(admin.ModelAdmin):
     # }
     fieldsets = [
         (None, {'fields': ['ecocase_title',
-                           'ecocase_description', 'ecocase_characters']}),
+                           'ecocase_description', 'ecocase_characters', 'ecocase_images', 'ecocase_image_urls']}),
         ('Date information', {'fields': ['timestamp']})
     ]
     inlines = [ESMInline]

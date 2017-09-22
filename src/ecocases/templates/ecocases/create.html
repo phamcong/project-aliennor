@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
 {% load staticfiles %}
 
 {% block content %}
@@ -11,15 +10,7 @@
         </div>
         <br>
         <div class="panel-body">
-            <form method="post" enctype="multipart/form-data" multiple> {% csrf_token %}
-                <head>
-                    {{ form|crispy }}
-                </head>                
-                <br>
-                <div class="text-right">
-                    <input type="submit" class="btn btn-primary" value="Create" class=""/>
-                </div>
-            </form>
+            {% include "ecocases/form.html" with form=form btn_title="Create" %}
         </div>
     </div>
 {% endblock %}

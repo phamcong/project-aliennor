@@ -1,0 +1,6 @@
+<form action="{% url 'ecocases:vote' ecocase.id %}" method="post">
+    {% csrf_token %} {% for esm in ecocase.esm_set.all %}
+    <input type="radio" name="esm" id="esm{{ forloop.counter }}" value="{{ esm.id }}" />
+    <label for="esm{{ forloop.counter }}">{{ esm.esm_title }}</label><br /> {% endfor %}
+    <input type="submit" value="Vote" />
+</form>

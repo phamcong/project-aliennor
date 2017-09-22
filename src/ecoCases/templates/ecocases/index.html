@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 {% block content %}
+
 <!-- Display latest added ecocases -->
     <div class="panel panel-default">
         {% if latest_ecocase_list %}
@@ -14,7 +17,7 @@
                         <div class="col-md-4">
                             {% if ecocase.first_image_url %}
                                 <div class="ecocase-photo">
-                                    <img src="{{ ecocase.first_image_url }}" class="center-block" alt="" width="300">
+                                    <img src="{{ ecocase.first_image_url }}" class="center-block" alt="" width="300px">
                                 </div>
                             {% endif %}
                         </div>
@@ -22,7 +25,8 @@
                             {% autoescape off %}{{ ecocase.ecocase_description }}{% endautoescape %}                             
                         </div>
                     </div>
-                </div>                                
+                </div>   
+                <hr>                             
             {% endfor %}
         {% else %}
         <p>No ecocases are available.</p>

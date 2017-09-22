@@ -4,8 +4,11 @@
 {% block content %}
 <!-- Display ecocase by id -->
 <div class="panel-heading">
-    <h3 class="panel-title"><a href="{% url 'ecocases:detail' ecocase.id %}">{{ ecocase.ecocase_title }}</a></h3>
+    <h3>{{ ecocase.ecocase_title }}</h3>
 </div>
+<!-- <div class="panel-heading">
+    <h3 class="panel-title"><a href="{% url 'ecocases:detail' ecocase.id %}">{{ ecocase.ecocase_title }}</a></h3>
+</div> -->
 <div class="panel-body">
     <div class="row top-buffer">
         <div class="col-md-4">
@@ -24,17 +27,34 @@
             {% autoescape off %}{{ ecocase.ecocase_description }}{% endautoescape %}
         </div>
     </div>
+
     <div class="row top-buffer">
-        <div class="col-md-12">
+        <div class="col-md-12 characters-textarea">
             <h4>Characters  : </h4>
             {% autoescape off %}{{ ecocase.ecocase_characters }}{% endautoescape %}
         </div>
     </div>
-</div>  
-<ul>
+
+    <h4>Associated ESM</h4>        
     {% for esm in ecocase.esm_set.all %}
-        <li>{{ esm.esm_title }}</li>        
+        <div class="row top-buffer">
+            <div class="col-md-8">
+                <li>{{ esm.esm_title }}</li>
+            </div>
+            <div class="col-md-4">
+                {{ esm.votes }} vote{{ esm.votes|pluralize }}
+            </div>
+        </div>
     {% endfor %}
-</ul>
+
+    <a href="{% url 'ecocases:vote' ecocase.id %}">Vote again?</a>
+
+    <br>
+    <div class="text-right">
+        <button type="button" class="btn btn-secondary"><a href="{% url 'ecocases:index' %}">Back to list</a></button>
+        <button type="button" class="btn btn-secondary"><a href="{% url 'ecocases:update' ecocase.id %}">Update</a></button>
+        <button type="button" class="btn btn-secondary"><a href="{% url 'ecocases:delete' ecocase.id %}">Delete</a></button>
+    </div>
+</div>  
 {% endblock %}
 

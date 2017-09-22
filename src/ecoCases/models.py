@@ -8,16 +8,19 @@ from tinymce import models as tinymce_models
 
 ecocase_image_fs = FileSystemStorage(location='/media/ecocases/')
 esm_choices = (
-    ('esm01', 'ESM01'),
-    ('esm02', 'ESM02'),
-    ('esm03', 'ESM03'),
-    ('esm04', 'ESM04'),
-    ('esm05', 'ESM05'),
-    ('esm06', 'ESM06'),
-    ('esm07', 'ESM07'),
-    ('esm08', 'ESM08'),
+    ('esm1', 'ESM1'),
+    ('esm2', 'ESM2'),
+    ('esm3', 'ESM3'),
+    ('esm4', 'ESM4'),
+    ('esm5', 'ESM5'),
+    ('esm6', 'ESM6'),
+    ('esm7', 'ESM7'),
+    ('esm8', 'ESM8'),
 )
 
+def make_upload_path(instance, filename):
+    file_root, file_ext = os.path.splitext(filename)
+    dir 
 
 class EcoCase(models.Model):
     ecocase_title = models.CharField(max_length=200)
