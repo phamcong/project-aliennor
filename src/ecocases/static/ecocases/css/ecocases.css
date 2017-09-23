@@ -16,6 +16,23 @@ h4 {
 .top-buffer { 
     margin-top:20px; 
     margin-bottom: 20px;
+<<<<<<< HEAD
+=======
+}
+
+.EcocaseImageList
+{
+    overflow-x:scroll;
+    overflow-y:hidden;
+    height:300px;
+    width:100%;
+    padding: 0 15px;
+}
+
+.EcocaseImageItem {
+    padding:0;
+    height:250px;
+>>>>>>> 77c5cb6acdd6806f52bbcc3b0c1cd352190a08ad
 }
 
 .cover-container {
@@ -40,11 +57,19 @@ h4 {
 }
 
 .characters-textarea {
+<<<<<<< HEAD
     max-height: 300px;
     width: 100%;
     white-space: nowrap;
     overflow-x: hidden;
     overflow-y: hidden;
+=======
+    height: 300px;
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: scroll;
+>>>>>>> 77c5cb6acdd6806f52bbcc3b0c1cd352190a08ad
 }
 
 #platform-logo {

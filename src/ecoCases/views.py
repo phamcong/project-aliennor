@@ -133,7 +133,11 @@ class CreateView(FormUserNeededMixin, FormView):
             ecocase.save()
             for i in range(1, 9):
                 ecocase.esm_set.create(
+<<<<<<< HEAD
                                     esm_title='Ecocase' + str(ecocase.id) + '_' + esms[i-1],
+=======
+                                    esm_title=str(form.cleaned_data['ecocase_title']) + '_ESM' + str(i),
+>>>>>>> 77c5cb6acdd6806f52bbcc3b0c1cd352190a08ad
                                     esm_type='ESM' + str(i),
                                     votes=0
                 )

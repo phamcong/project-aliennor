@@ -24,6 +24,7 @@
                 <img style="float:left" id="platform-logo" src="{% static 'ecocases/images/aliennor-logo.png' %}"/>
                 <h2>ALIENNOR</h2>  
             </div>
+<<<<<<< HEAD
             <div class="col-md-4">
                 {% if user.is_authenticated %}
                     <li>User: {{ user.get_username }}</li>
@@ -32,6 +33,8 @@
                     <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>   
                 {% endif %}                 
             </div>
+=======
+>>>>>>> 77c5cb6acdd6806f52bbcc3b0c1cd352190a08ad
         </div>
     </div>
     <hr>
