@@ -3,32 +3,6 @@
 
 {% block content %}
 <!-- Display ecocase by id -->
-<<<<<<< HEAD
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h4 class="panel-title">{{ ecocase.ecocase_title }}</h4>
-    </div>
-        <!-- <div class="panel-heading">
-            <h3 class="panel-title"><a href="{% url 'ecocases:detail' ecocase.id %}">{{ ecocase.ecocase_title }}</a></h3>
-        </div> -->
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="cover-container">
-                    <ul class="list-inline">
-                        {% for image_url in ecocase.ecocase_image_url_list %}
-                            <div class="cover-item">
-                                <img src="{% static image_url %}" class="center-block" alt="" height="250px">
-                            </div>
-                        {% endfor %}
-                    </ul>                
-                </div>            
-            </div>
-            <div class="col-md-8">
-                <h4>Description: </h4>
-                {% autoescape off %}{{ ecocase.ecocase_description }}{% endautoescape %}
-            </div>
-=======
 <div class="panel-heading">
     <h3>{{ ecocase.ecocase_title }}</h3>
 </div>
@@ -47,37 +21,11 @@
                     {% endfor %}
                 </ul>                
             </div>            
->>>>>>> 77c5cb6acdd6806f52bbcc3b0c1cd352190a08ad
         </div>
-    
-        <div class="row top-buffer">
-            <div class="col-md-12 characters-textarea">
-                <h4>Characters  : </h4>
-                {% autoescape off %}{{ ecocase.ecocase_characters }}{% endautoescape %}
-            </div>
+        <div class="col-md-8">
+            <h4>Description: </h4>
+            {% autoescape off %}{{ ecocase.ecocase_description }}{% endautoescape %}
         </div>
-<<<<<<< HEAD
-    
-        <h4>Associated ESM</h4>        
-        {% for esm in ecocase.esm_set.all %}
-            <div class="row top-buffer">
-                <div class="col-md-8">
-                    <a href="{% static esm.esm_file_url %}">{{ esm.esm_title }}</a>
-                </div>
-                <div class="col-md-4 text-right">
-                    {{ esm.votes }} vote{{ esm.votes|pluralize }}
-                </div>
-            </div>
-        {% endfor %}
-    
-        <div class="text-right">
-            <a href="{% url 'ecocases:vote' ecocase.id %}">Vote again?</a>
-        </div>
-    </div>
-</div>  
-
-<div>
-=======
     </div>
 
     <div class="row top-buffer">
@@ -98,11 +46,11 @@
             </div>
         </div>
     {% endfor %}
-
-    <a href="{% url 'ecocases:vote' ecocase.id %}">Vote again?</a>
-
+    <div class="text-right">
+        <a href="{% url 'ecocases:vote' ecocase.id %}">Vote again?</a>
+    </div>
+    
     <br>
->>>>>>> 77c5cb6acdd6806f52bbcc3b0c1cd352190a08ad
     <div class="text-right">
         <button type="button" class="btn btn-secondary"><a href="{% url 'ecocases:index' %}">Back to list</a></button>
         <button type="button" class="btn btn-secondary"><a href="{% url 'ecocases:update' ecocase.id %}">Update</a></button>

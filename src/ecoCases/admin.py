@@ -17,7 +17,7 @@ class EcoCaseAdmin(admin.ModelAdmin):
     #     models.TextField: {'widget': Textarea(attrs={'rows': 5, 'cols': 40})},
     # }
     fieldsets = [
-        (None, {'fields': ['ecocase_title',
+        (None, {'fields': ['user', 'ecocase_title',
                            'ecocase_description', 'ecocase_characters', 'ecocase_images', 'ecocase_image_urls']}),
         ('Date information', {'fields': ['timestamp']})
     ]
