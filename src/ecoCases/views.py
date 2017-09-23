@@ -1,4 +1,5 @@
-import os, datetime
+import os
+import datetime
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, render
 from django.views.generic.edit import FormView
@@ -9,6 +10,7 @@ from django.urls import reverse
 from django.views import generic
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 from .models import EcoCase, ESM
 from .forms import EcoCaseForm
@@ -37,6 +39,7 @@ esms = [
     'Innover par les matériaux et production',
     "Innover par la gestion du transfert d'impact et l'effet rebond"
 ]
+
 
 class IndexView(generic.ListView):
     '''
@@ -129,14 +132,14 @@ class CreateView(FormUserNeededMixin, FormView):
                               ecocase_characters=form.cleaned_data['ecocase_characters'],
                               ecocase_image_urls=';'.join(image_url_list),
                               timestamp=datetime.datetime.now(),
-                              user = request.user,
+                              user=request.user,
                               )
             ecocase.save()
             for i in range(1, 9):
                 ecocase.esm_set.create(
-                                    esm_title='Ecocase' + str(ecocase.id) + '_' + esms[i-1],
-                                    esm_type='ESM' + str(i),
-                                    votes=0
+                    esm_title='Ecocase' + str(ecocase.id) + '_' + esms[i - 1],
+                    esm_type='ESM' + str(i),
+                    votes=0
                 )
 
             return self.form_valid(form)
@@ -187,16 +190,19 @@ class CreateView(FormUserNeededMixin, FormView):
     #     ecocase = get_object_or_404(EcoCase, pk=ecocase_id)
     #     return render(request, 'ecocases/detail.html', {'ecocase': ecocase})
 
+
 class UpdateView(UserOwnerMixin, generic.UpdateView):
     queryset = EcoCase.objects.all()
     form_class = EcoCaseForm
     template_name = 'ecocases/update.html'
     success_url = 'ecocases/'
 
+
 class DeleteView(generic.DeleteView):
     model = EcoCase
     template_name = 'ecocases/confirm_delete.html'
     success_url = reverse_lazy('ecocases:index')
+
 
 def vote(request, ecocase_id):
     ecocase = get_object_or_404(EcoCase, pk=ecocase_id)
@@ -215,3 +221,10 @@ def vote(request, ecocase_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('ecocases:detail', args=(ecocase.id,)))
+
+
+def profile(request, username):
+    user = User.objects.get(username=username)
+    ecocases = EcoCase.objects.filter(user=user)
+    return render(request, 'user/profile.html',
+                  {'username': username, 'ecocases': ecocases})

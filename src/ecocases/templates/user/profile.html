@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="list-group">
+    {% for ecocase in ecocases %}
+        <a href="/ecocases/{{ecocase.id}}/" class="list-group-item">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ ecocase.ecocase_title }}</h3>
+            </div>
+        </a>
+    {% endfor %}
+</div>
+{% endblock %}
