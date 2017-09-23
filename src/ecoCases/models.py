@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.forms import TextInput, Textarea
 from django.core.files.storage import FileSystemStorage
 from tinymce import models as tinymce_models
+from django.contrib.auth.models import User
 
 
 ecocase_image_fs = FileSystemStorage(location='/media/ecocases/')
@@ -23,6 +24,7 @@ def make_upload_path(instance, filename):
     dir 
 
 class EcoCase(models.Model):
+    user = models.ForeignKey(User)
     ecocase_title = models.CharField(max_length=200)
     ecocase_description = tinymce_models.HTMLField()
     ecocase_characters = tinymce_models.HTMLField()
