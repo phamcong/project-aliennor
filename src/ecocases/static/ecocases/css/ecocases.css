@@ -15,21 +15,7 @@ h4 {
 
 .top-buffer { 
     margin-top:20px; 
-    margin-bottom: 50px;
-}
-
-.EcocaseImageList
-{
-    overflow-x:scroll;
-    overflow-y:hidden;
-    height:300px;
-    width:100%;
-    padding: 0 15px;
-}
-
-.EcocaseImageItem {
-    padding:0;
-    height:250px;
+    margin-bottom: 20px;
 }
 
 .cover-container {
@@ -37,8 +23,9 @@ h4 {
     width: 100%;
     white-space: nowrap;
     overflow-x: scroll;
-    overflow-y: scroll;
+    overflow-y: hidden;
 }
+
 .cover-item {
     position: relative;
     display: inline-block;
@@ -50,4 +37,18 @@ h4 {
     background-position: top left;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.characters-textarea {
+    max-height: 300px;
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#platform-logo {
+    float: left;
+    width: 50px;
+    height: 50px;
 }

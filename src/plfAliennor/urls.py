@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^ecocases/', include('ecocases.urls', namespace='ecocases')),
     url(r'^admin/', admin.site.urls),
     url(r'^tinymce/', include('tinymce.urls')),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
 ]
 
 if settings.DEBUG is True:
