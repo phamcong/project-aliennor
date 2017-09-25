@@ -9,6 +9,12 @@
     <div class="panel panel-default">
         {% if latest_ecocase_list %}
             {% for ecocase in latest_ecocase_list %}
+                {% if ecocase.user.username %}
+                <a class="panel panel-username" 
+                    href="{% url 'ecocases:profile' ecocase.user.username %}">
+                    by {{ ecocase.user.username }}
+                </a>
+                {% endif %}
                 <div class="panel-heading">
                     <h4 class="panel-title"><a href="{% url 'ecocases:detail' ecocase.id %}">{{ ecocase.ecocase_title }}</a></h4>
                 </div>

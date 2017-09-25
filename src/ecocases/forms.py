@@ -24,3 +24,8 @@ class EcoCaseForm(forms.ModelForm):
     # ecocase_image_urls = forms.CharField(max_length=None)
     # ecocase_images = forms.FileField()
     # pub_date = forms.DateTimeField('date published')
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField(label='User Name', max_length=64)
+    password = forms.CharField(widget=forms.PasswordInput())

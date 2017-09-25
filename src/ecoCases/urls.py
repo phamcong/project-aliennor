@@ -11,5 +11,6 @@ urlpatterns = [
     url(r'^(?P<pk>\d+)/delete/$', views.DeleteView.as_view(),
         name='delete'),  # /tweet/1/update
     url(r'^(?P<ecocase_id>[0-9]+)/vote/$', views.vote, name='vote'),
-    url(r'^user/(\w+)/$', views.profile, name='profile'),
+    url(r'^user/(?P<username>\w+)/$', views.profile, name='profile'),
+    url(r'^login/$', views.login_view, name='login'),
 ]

@@ -2,13 +2,30 @@
 {% load staticfiles %}
 
 {% block content %}
-<div class="list-group">
-    {% for ecocase in ecocases %}
-        <a href="/ecocases/{{ecocase.id}}/" class="list-group-item">
+<div class="panel panel-default">
+    {% if ecocases %}
+        {% for ecocase in ecocases %}
             <div class="panel-heading">
-                <h3 class="panel-title">{{ ecocase.ecocase_title }}</h3>
+                <h4 class="panel-title"><a href="{% url 'ecocases:detail' ecocase.id %}">{{ ecocase.ecocase_title }}</a></h4>
             </div>
-        </a>
-    {% endfor %}
+            <div class="panel-body">
+                <div class="row top-buffer">
+                    <div class="col-md-4">
+                        {% if ecocase.first_image_url %}
+                            <div class="ecocase-photo">
+                                <img src="{% static ecocase.first_image_url %}" class="center-block" alt="" width="300px">
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-8">
+                        {% autoescape off %}{{ ecocase.ecocase_description }}{% endautoescape %}                             
+                    </div>
+                </div>
+            </div>   
+            <hr>                             
+        {% endfor %}
+    {% else %}
+    <p>No ecocases are belong to {{ username }}.</p>
+    {% endif %} 
 </div>
 {% endblock %}

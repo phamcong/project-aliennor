@@ -11,9 +11,10 @@ from django.views import generic
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 
 from .models import EcoCase, ESM
-from .forms import EcoCaseForm
+from .forms import EcoCaseForm, LoginForm
 from .mixins import FormUserNeededMixin, UserOwnerMixin
 
 from pprint import pprint
@@ -228,3 +229,6 @@ def profile(request, username):
     ecocases = EcoCase.objects.filter(user=user)
     return render(request, 'user/profile.html',
                   {'username': username, 'ecocases': ecocases})
+
+
+def login_view(request)
