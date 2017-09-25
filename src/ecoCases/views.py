@@ -231,4 +231,36 @@ def profile(request, username):
                   {'username': username, 'ecocases': ecocases})
 
 
-def login_view(request)
+# def login_view(request):
+#     if request.method == 'POST':
+#         form = LoginForm(request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data['username']
+#             password = form.cleaned_data['password']
+#             user = authenticate(username=username, password=password)
+#             if user is not None:
+#                 if user.is_active:
+#                     login(request, user)
+#                     return HttpResponseRedirect(reverse_lazy('ecocases:index'))
+#                 else:
+#                     print("The account has been disabled!")
+#             else:
+#                 print("The username and password were incorrect.")
+#     else:
+#         form = LoginForm()
+#         return render(request, 'user/login.html', {'form': form})
+
+def login_view(request):
+    form = LoginForm(request.POST or None)
+    if request.POST and form.is_valid():
+        user = form.login(request)
+        if user:
+            login(request, user)
+            # Redirect to a success page.
+            return HttpResponseRedirect(reverse('ecocases:profile', args=(user.username, )))
+    return render(request, 'user/login.html', {'form': form})
+
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect(reverse_lazy('ecocases:index'))

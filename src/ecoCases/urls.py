@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^(?P<ecocase_id>[0-9]+)/vote/$', views.vote, name='vote'),
     url(r'^user/(?P<username>\w+)/$', views.profile, name='profile'),
     url(r'^login/$', views.login_view, name='login'),
+    url(r'^logout/$', views.logout_view, name='logout'),
 ]

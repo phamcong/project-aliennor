@@ -27,10 +27,14 @@
 
             <div class="col-md-4">
                 {% if user.is_authenticated %}
-                    <li>User: {{ user.get_username }}</li>
-                    <li><a href="{% url 'logout' %}?next={{request.path}}">Logout</a></li>   
+                    <a class="navbar-text navbar-right"
+                        href="{% url 'ecocases:profile' user.username %}">{{ user.username }}</a>                    
+                    <a class="navbar-text navbar-right"
+                        href="{% url 'ecocases:logout' %}">Logout</a>
+                    <!-- <li><a href="{% url 'logout' %}?next={{request.path}}">Logout</a></li>    -->
                 {% else %}
-                    <li><a href="{% url 'login' %}?next={{request.path}}">Login</a></li>   
+                    <a class="navbar-text navbar-right"
+                        href="{% url 'ecocases:login' %}">Login</a>                        
                 {% endif %}                 
             </div>
         </div>

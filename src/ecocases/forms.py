@@ -3,6 +3,7 @@ from django import forms
 from .models import EcoCase
 from tinymce.widgets import TinyMCE
 from django.contrib.admin import widgets
+from django.contrib.auth import authenticate
 
 
 class EcoCaseForm(forms.ModelForm):
@@ -29,3 +30,18 @@ class EcoCaseForm(forms.ModelForm):
 class LoginForm(forms.Form):
     username = forms.CharField(label='User Name', max_length=64)
     password = forms.CharField(widget=forms.PasswordInput())
+
+    def clean(self):
+        username = self.cleaned_data.get('username')
+        password = self.cleaned_data.get('password')
+        user = authenticate(username=username, password=password)
+        if not user or not user.is_active:
+            raise forms.ValidationError(
+                "Sorry, that login was invalid. Please try again.")
+        return self.cleaned_data
+
+    def login(self, request):
+        username = self.cleaned_data.get('username')
+        password = self.cleaned_data.get('password')
+        user = authenticate(username=username, password=password)
+        return user
