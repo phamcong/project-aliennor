@@ -24,7 +24,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^accounts/', include('django.contrib.auth.urls')),
+    url(r'^api/ecocases/', include('ecocases.api.urls', namespace='ecocases-api')),
 ]
 
 if settings.DEBUG is True:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'tinymce',
     'bootstrap3',
+    'rest_framework',
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
