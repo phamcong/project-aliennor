@@ -4,7 +4,29 @@
 {% bootstrap_css %}
 {% bootstrap_javascript %}
 
+{% block script %}
+<script>
+$(document).ready(function(){
+    console.log("working")
+    $.ajax({
+        url: "/api/ecocases",    
+        method: "GET",
+        success: function(data){
+            $.each(data, function(key, value){
+                console.log(key);
+                console.log(value.ecocase_characters);
+                $("#ecocase-characters").append(value.ecocase_characters)
+            });
+       }
+    });
+});
+</script>
+{% endblock %}
+
 {% block content %}
+<div id="ecocase-characters">
+
+</div>
 <!-- Display latest added ecocases -->
     <div class="panel panel-default">
         {% if latest_ecocase_list %}
